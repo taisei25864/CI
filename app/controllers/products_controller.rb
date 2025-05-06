@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show edit update destroy ]
-  
+  before_action :set_product, only: %i[show edit update destroy]
+
   def index
     @products = Product.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @product = Product.new
@@ -21,10 +22,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
-  def update 
+  def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to @product
@@ -38,8 +38,8 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
-
   private
+
   def set_product
     @product = Product.find(params[:id])
   end
@@ -47,5 +47,4 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name)
   end
-    
 end
